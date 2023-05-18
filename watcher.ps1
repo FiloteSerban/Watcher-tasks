@@ -1,2 +1,2 @@
 
-Invoke-AutomationWatcherAction -Message "Successfully pass the message!"
+Invoke-AutomationWatcherAction -Message "gigaadmin123 parolamea"
