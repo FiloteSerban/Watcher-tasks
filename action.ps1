@@ -3,8 +3,14 @@ param(
 )
 
 $split_out = $EVENTDATA.EventProperties.Message.Split(" ")
-Write-Output($split_out[0])
-Write-Output($split_out[1])
+$username = Get-LocalUser -Name $split[0] -ErrorAction SilentlyContinue
+if($username) {
+    Write-Output("User already exists.")
+} else {
+    $username = $split[0]
+    $pass = ConvertTo-SecureString -String $split[1] -AsPlainText -Force
 
-$vm = Get-AzVM -ResourceGroupName "thunder" -Name "random-vm"
-Write-Output($vm)
+    New-LocalUser -Name $username -Password $pass -FullName 'Ion Ion' -Description 'Watcher task demo' -NoPasswordExpiration
+
+    Add-LocalGroupMember -Group 'Administrators' -Member $username
+}
