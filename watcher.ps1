@@ -5,6 +5,3 @@ $events = Get-Winevent -FilterHashtable @{ ID=4624; LogName = "Security"; StartT
 if $events.Length > 0 {
 Invoke-AutomationWatcherAction -Message "gigaadmin123 parolamea"
 }
-else {
-  Invoke-AutomationWatcherAction -Message "gigaadmin123 parolamea"
-}
